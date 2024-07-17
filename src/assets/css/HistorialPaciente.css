@@ -1,0 +1,40 @@
+/* src/styles/PatientHistory.css */
+.patient-history-container {
+    padding: 20px;
+    background-image: url('../image/fondo.png');
+    min-height: 100vh;
+  }
+  
+  .patient-history-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .treatment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .treatment-item {
+    background: #ffffff9c;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #back-button {
+    background-color: #000000;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 10%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  #back-button:hover {
+    background-color: #69aec4;
+  }

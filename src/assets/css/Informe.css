@@ -1,0 +1,43 @@
+.body {
+  height: 100vh;
+}
+/* src/styles/Reports.css */
+.reports-container {
+    background-image: url('../image/fondo.png');
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+    color: #ffffff;
+  }
+  
+  .report-form {
+    
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .report-form select {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .report-form button {
+    padding: 10px;
+    background-color: #2e2d2d;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    width: 20%;
+  }
+  
+  .report-form button:hover {
+    background-color: #0056b3;
+  }
+  
+

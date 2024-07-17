@@ -1,0 +1,37 @@
+/* src/assets/css/Perfil.css */
+.perfil-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 100px;
+    border: 1px solid #852222;
+    border-radius: 8px;
+    background-color: #585a58d3;
+  }
+  
+  .perfil-form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #06c0ce;
+  }
+  
