@@ -1,53 +1,89 @@
 #!/bin/bash
-# Ruta donde se instalará Odoo ruta_odoo='/opt/odoo'
-# Ruta donde se almacenarán los logs ruta_logs='/var/log/odoo/'
-# Usuario del sistema operativo con permisos para gestionar Odoo - usuario_1='operador_odoo'
-# Contraseña para el usuario postgres propio del SGBD POSTGRES
+
+# Ruta donde se instalará Odoo
+ruta_odoo='/opt/odoo'
+
+# Ruta donde se almacenarán los logs
+ruta_logs='/var/log/odoo/'
+
+# Usuario del sistema operativo con permisos para gestionar Odoo
+usuario_1='operador_odoo'
+
+# Contraseña para el usuario postgres del SGBD POSTGRES
 pass_postgres='pass_postgres_bd'
-#Usuario de la base de datos que configuraremos en Odoo usuario_2='admin_bd_empresa1'
-# Contraseña para el usuario_2 pass_usuario_2='abc123..'
-# Nombre de la base de datos que configuraremos en Odoo nombre_bd='bd_empresa1'
+
+# Usuario de la base de datos que configuraremos en Odoo
+usuario_2='admin_bd_empresa1'
+
+# Contraseña para el usuario_2
+pass_usuario_2='abc123..'
+
+# Nombre de la base de datos que configuraremos en Odoo
+nombre_bd='bd_empresa1'
+
+# Actualizar el sistema
 sudo apt update
 sudo apt -y upgrade
+
+# Instalar dependencias
 sudo apt install curl fontconfig xfonts-base xfonts-75dpi postgresql postgresql-server-dev-14 git python3 python3-pip build-essential python3-dev libldap2-dev libsasl2-dev python3-setuptools libjpeg-dev nodejs npm postgresql-client -y
 clear
-sudo adduser --system-quiet --shell=/bin/bash--home=${ruta_odoo} --gecos $ {usuario_1} --group ${usuario_1} sudo passwd ${usuario_1}
-echo "Introduzca contraseña para usuario ${usuario_1}..."
+
+# Crear el usuario del sistema para Odoo
+sudo adduser --system --quiet --shell /bin/bash --home ${ruta_odoo} --gecos "${usuario_1}" --group ${usuario_1}
+sudo passwd ${usuario_1}
+
+# Clonar el repositorio de Odoo
+sudo git clone --depth 1 --branch 16.0 https://github.com/odoo/odoo ${ruta_odoo}
+
+# Establecer permisos adecuados
+sudo chown -R ${usuario_1}:${usuario_1} ${ruta_odoo}
+sudo mkdir -p ${ruta_logs}
+sudo chown -R ${usuario_1}:${usuario_1} ${ruta_logs}
 clear
-sudo git clone --depth 1-branch 16.0 https://github.com/odoo/odoo $ {ruta_odoo}
-sudo chown ${usuario_1}:${usuario_1} ${ruta_odoo} -R sudo mkdir ${ruta_logs} sudo chowa ${usuario_1}:${usuario_1} ${ruta_logs} -R
-clear
-sudo rm /usr/lib/python3/dist-packages/_cffi_backend.cpython-310-x86_64-linux- gnu.so
+
+# Instalar cffi y otras dependencias
+sudo rm /usr/lib/python3/dist-packages/_cffi_backend.cpython-310-x86_64-linux-gnu.so
 sudo pip3 install cffi
 sudo pip3 install -r ${ruta_odoo}/requirements.txt
 clear
-cd
-/tmp
-wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/ wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+
+# Instalar wkhtmltopdf
+cd /tmp
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 sudo ln -s /usr/local/bin/wkhtmltopdf /usr/bin/
 sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin/
 clear
-curl -fsSL https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg
---dearmor -o /etc/apt/trusted.gpg.d/pgadmin.gpg
-sudo sh -c 'echo "deb
-https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/jammy pgadmin4 main" >
-/etc/apt/sources.list.d/pgadmin4.list'
+
+# Instalar pgAdmin 4
+curl -fsSL https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/pgadmin.gpg
+sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/jammy pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
+sudo apt update
 sudo apt install pgadmin4-desktop -y
 clear
-sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '$ {pass_postgres}';"
-sudo u postgres psql -c "CREATE USER ${usuario_2} WITH PASSWORD '$ {pass_usuario_2}';"
+
+# Configurar PostgreSQL
+sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '${pass_postgres}';"
+sudo -u postgres psql -c "CREATE USER ${usuario_2} WITH PASSWORD '${pass_usuario_2}';"
 sudo -u postgres psql -c "CREATE DATABASE ${nombre_bd};"
 sudo -u postgres psql -c "GRANT ALL ON DATABASE ${nombre_bd} TO ${usuario_2};"
 sudo -u postgres psql -c "ALTER DATABASE ${nombre_bd} OWNER TO ${usuario_2};"
-sudo -u $usuario_1 ${ruta_odoo}/odoo-bin -r ${usuario_2} -w ${pass_usuario_2} --db_host localhost -d ${nombre_bd} i base --addons-path=${ruta_odoo}/addons --without-demo-all-s--stop-after-init
+
+# Iniciar Odoo por primera vez
+sudo -u ${usuario_1} ${ruta_odoo}/odoo-bin -r ${usuario_2} -w ${pass_usuario_2} --db_host=localhost -d ${nombre_bd} -i base --addons-path=${ruta_odoo}/addons --without-demo=all --stop-after-init
 clear
-echo "Introduzca contraseña para el usuario postgres del sistema operativo" sudo passwd postgres
+
+# Cambiar la contraseña del usuario postgres del sistema operativo
+echo "Introduzca contraseña para el usuario postgres del sistema operativo"
+sudo passwd postgres
 clear
+
+# Mensajes finales
 echo "Usuario de sistema ${usuario_1}... CREADO"
 echo "Odoo descargado en ${ruta_odoo}"
-echo "La carpera logs está en ${ruta_logs}"
-echo "Instalado cffi, wkhtmltopdf y pgadmin4"
+echo "La carpeta de logs está en ${ruta_logs}"
+echo "Instalado cffi, wkhtmltopdf y pgAdmin4"
 echo "Contraseña del usuario postgres de la BD cambiada a: ${pass_postgres}"
 echo "En el SGBD Postgres se ha creado el usuario: ${usuario_2} con contraseña: ${pass_usuario_2}"
 echo "En el SGBD Postgres se ha creado la bd: ${nombre_bd} y se han asignado permisos y propiedad"
