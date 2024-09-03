@@ -1,0 +1,405 @@
+2024-09-01 16:56:29,868 56974 INFO ? odoo: Odoo version 16.0 
+2024-09-01 16:56:29,868 56974 INFO ? odoo: addons paths: ['/opt/odoo/odoo/addons', '/opt/odoo/.local/share/Odoo/addons/16.0', '/opt/odoo/addons'] 
+2024-09-01 16:56:29,869 56974 INFO ? odoo: database: default@default:default 
+2024-09-01 16:56:29,954 56974 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2024-09-01 16:56:30,122 56974 INFO ? odoo.service.server: HTTP service (werkzeug) running on darly-virtualbox:8069 
+2024-09-01 16:56:30,124 56974 INFO ? odoo.sql_db: Connection to the database failed 
+Exception in thread odoo.service.cron.cron0:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/odoo/odoo/service/server.py", line 508, in target
+    self.cron_thread(i)
+  File "/opt/odoo/odoo/service/server.py", line 466, in cron_thread
+    with conn.cursor() as cr:
+  File "/opt/odoo/odoo/sql_db.py", line 740, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+  File "/opt/odoo/odoo/sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+  File "<decorator-gen-2>", line 2, in borrow
+  File "/opt/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/opt/odoo/odoo/sql_db.py", line 668, in borrow
+    result = psycopg2.connect(
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+2024-09-01 16:56:30,129 56974 INFO ? odoo.sql_db: Connection to the database failed 
+Exception in thread odoo.service.cron.cron1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/odoo/odoo/service/server.py", line 508, in target
+    self.cron_thread(i)
+  File "/opt/odoo/odoo/service/server.py", line 466, in cron_thread
+    with conn.cursor() as cr:
+  File "/opt/odoo/odoo/sql_db.py", line 740, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+  File "/opt/odoo/odoo/sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+  File "<decorator-gen-2>", line 2, in borrow
+  File "/opt/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/opt/odoo/odoo/sql_db.py", line 668, in borrow
+    result = psycopg2.connect(
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  role "operador_odoo" does not exist
+
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  role "operador_odoo" does not exist
+
+2024-09-01 16:56:55,388 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:55,415 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:55] "GET / HTTP/1.1" 303 - 0 0.000 0.030
+2024-09-01 16:56:55,428 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:55,432 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:55,433 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:55] "GET /web HTTP/1.1" 303 - 0 0.000 0.008                                                                             
+2024-09-01 16:56:55,448 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,260 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,299 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/database/selector HTTP/1.1" 200 - 0 0.000 0.855
+2024-09-01 16:56:56,424 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,430 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/src/libs/fontawesome/css/font-awesome.css HTTP/1.1" 200 - 0 0.000 0.026
+2024-09-01 16:56:56,432 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,442 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/lib/jquery/jquery.js HTTP/1.1" 200 - 0 0.000 0.036
+2024-09-01 16:56:56,445 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,449 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/lib/bootstrap/dist/css/bootstrap.css HTTP/1.1" 200 - 0 0.000 0.039
+2024-09-01 16:56:56,460 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,469 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/lib/bootstrap/js/dist/dom/event-handler.js HTTP/1.1" 200 - 0 0.000 0.058
+2024-09-01 16:56:56,470 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,473 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/lib/bootstrap/js/dist/dom/data.js HTTP/1.1" 200 - 0 0.000 0.044
+2024-09-01 16:56:56,474 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,478 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/lib/bootstrap/js/dist/dom/manipulator.js HTTP/1.1" 200 - 0 0.000 0.047
+2024-09-01 16:56:56,486 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,510 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/lib/bootstrap/js/dist/dom/selector-engine.js HTTP/1.1" 200 - 0 0.000 0.066
+2024-09-01 16:56:56,537 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,549 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/lib/bootstrap/js/dist/base-component.js HTTP/1.1" 200 - 0 0.000 0.081
+2024-09-01 16:56:56,551 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,569 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/lib/bootstrap/js/dist/modal.js HTTP/1.1" 200 - 0 0.000 0.095
+2024-09-01 16:56:56,570 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,572 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/src/public/database_manager.js HTTP/1.1" 200 - 0 0.000 0.095
+2024-09-01 16:56:56,577 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,579 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/img/logo2.png HTTP/1.1" 200 - 0 0.000 0.005
+2024-09-01 16:56:56,668 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,669 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 0 0.000 0.005
+2024-09-01 16:56:56,691 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 16:56:56,698 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 16:56:56] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 0 0.000 0.017
+2024-09-01 17:00:43,823 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 17:00:45,540 56974 INFO None odoo.service.db: Create database `prueba`. 
+2024-09-01 17:00:45,543 56974 INFO None odoo.sql_db: Connection to the database failed 
+2024-09-01 17:00:45,543 56974 ERROR None odoo.addons.web.controllers.database: Database creation error. 
+Traceback (most recent call last):
+  File "/opt/odoo/addons/web/controllers/database.py", line 81, in create
+    dispatch_rpc('db', 'create_database', [master_pwd, name, bool(post.get('demo')), lang, password, post['login'], country_code, post['phone']])
+  File "/opt/odoo/odoo/http.py", line 369, in dispatch_rpc
+    return dispatch(method, params)
+  File "/opt/odoo/odoo/service/db.py", line 480, in dispatch
+    return g[exp_method_name](*params)
+  File "<decorator-gen-20>", line 2, in exp_create_database
+  File "/opt/odoo/odoo/service/db.py", line 43, in if_db_mgt_enabled
+    return method(self, *args, **kwargs)
+  File "/opt/odoo/odoo/service/db.py", line 140, in exp_create_database
+    _create_empty_database(db_name)
+  File "/opt/odoo/odoo/service/db.py", line 101, in _create_empty_database
+    with closing(db.cursor()) as cr:
+  File "/opt/odoo/odoo/sql_db.py", line 740, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+  File "/opt/odoo/odoo/sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+  File "<decorator-gen-2>", line 2, in borrow
+  File "/opt/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/opt/odoo/odoo/sql_db.py", line 668, in borrow
+    result = psycopg2.connect(
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  role "operador_odoo" does not exist
+
+2024-09-01 17:00:45,982 56974 INFO None odoo.sql_db: Connection to the database failed 
+2024-09-01 17:00:46,027 56974 INFO None werkzeug: 127.0.0.1 - - [01/Sep/2024 17:00:46] "POST /web/database/create HTTP/1.1" 200 - 0 0.000 2.207
+2024-09-01 17:00:46,344 56974 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 17:00:46,345 56974 INFO ? werkzeug: 127.0.0.1 - - [01/Sep/2024 17:00:46] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 0 0.000 0.005
+^C2024-09-01 17:02:06,328 56974 INFO ? odoo.service.server: Initiating shutdown 
+2024-09-01 17:02:06,330 56974 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2024-09-01 17:02:06,333 56974 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 0 connections  
+operador_odoo@darly-virtualbox:~$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:102:105::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:103:106:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+syslog:x:104:111::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:112:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:115::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:116::/nonexistent:/usr/sbin/nologin
+usbmux:x:109:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+dnsmasq:x:110:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+kernoops:x:111:65534:Kernel Oops Tracking Daemon,,,:/:/usr/sbin/nologin
+avahi:x:112:119:Avahi mDNS daemon,,,:/run/avahi-daemon:/usr/sbin/nologin
+cups-pk-helper:x:113:120:user for cups-pk-helper service,,,:/home/cups-pk-helper:/usr/sbin/nologin
+rtkit:x:114:121:RealtimeKit,,,:/proc:/usr/sbin/nologin
+whoopsie:x:115:122::/nonexistent:/bin/false
+fwupd-refresh:x:116:123:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+saned:x:117:125::/var/lib/saned:/usr/sbin/nologin
+colord:x:118:126:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/nologin
+sddm:x:119:127:Simple Desktop Display Manager:/var/lib/sddm:/bin/false
+geoclue:x:120:128::/var/lib/geoclue:/usr/sbin/nologin
+pulse:x:121:129:PulseAudio daemon,,,:/run/pulse:/usr/sbin/nologin
+hplip:x:122:7:HPLIP system user,,,:/run/hplip:/bin/false
+darly:x:1000:1000:darly:/home/darly:/bin/bash
+postgres:x:123:132:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
+operador_odoo:x:124:133:operador_odoo,,,:/opt/odoo:/bin/bash
+operador_odoo@darly-virtualbox:~$ ./odoo-bin
+2024-09-01 17:04:38,812 57162 INFO ? odoo: Odoo version 16.0 
+2024-09-01 17:04:38,812 57162 INFO ? odoo: Using configuration file at /opt/odoo/.odoorc 
+2024-09-01 17:04:38,812 57162 INFO ? odoo: addons paths: ['/opt/odoo/odoo/addons', '/opt/odoo/.local/share/Odoo/addons/16.0', '/opt/odoo/addons'] 
+2024-09-01 17:04:38,812 57162 INFO ? odoo: database: default@default:default 
+2024-09-01 17:04:38,928 57162 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2024-09-01 17:04:39,159 57162 INFO ? odoo.service.server: HTTP service (werkzeug) running on darly-virtualbox:8069 
+2024-09-01 17:04:39,162 57162 INFO ? odoo.sql_db: Connection to the database failed 
+Exception in thread odoo.service.cron.cron0:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/odoo/odoo/service/server.py", line 508, in target
+    self.cron_thread(i)
+  File "/opt/odoo/odoo/service/server.py", line 466, in cron_thread
+    with conn.cursor() as cr:
+  File "/opt/odoo/odoo/sql_db.py", line 740, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+  File "/opt/odoo/odoo/sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+  File "<decorator-gen-2>", line 2, in borrow
+  File "/opt/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/opt/odoo/odoo/sql_db.py", line 668, in borrow
+    result = psycopg2.connect(
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  role "operador_odoo" does not exist
+
+2024-09-01 17:04:39,166 57162 INFO ? odoo.sql_db: Connection to the database failed 
+Exception in thread odoo.service.cron.cron1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/odoo/odoo/service/server.py", line 508, in target
+    self.cron_thread(i)
+  File "/opt/odoo/odoo/service/server.py", line 466, in cron_thread
+    with conn.cursor() as cr:
+  File "/opt/odoo/odoo/sql_db.py", line 740, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+  File "/opt/odoo/odoo/sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+  File "<decorator-gen-2>", line 2, in borrow
+  File "/opt/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/opt/odoo/odoo/sql_db.py", line 668, in borrow
+    result = psycopg2.connect(
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  role "operador_odoo" does not exist
+
+2024-09-01 17:04:56,827 57162 INFO ? odoo.sql_db: Connection to the database failed 
+2024-09-01 17:04:58,102 57162 INFO None odoo.service.db: Create database `prueba`. 
+2024-09-01 17:04:58,105 57162 INFO None odoo.sql_db: Connection to the database failed 
+2024-09-01 17:04:58,105 57162 ERROR None odoo.addons.web.controllers.database: Database creation error. 
+Traceback (most recent call last):
+  File "/opt/odoo/addons/web/controllers/database.py", line 81, in create
+    dispatch_rpc('db', 'create_database', [master_pwd, name, bool(post.get('demo')), lang, password, post['login'], country_code, post['phone']])
+  File "/opt/odoo/odoo/http.py", line 369, in dispatch_rpc
+    return dispatch(method, params)
+  File "/opt/odoo/odoo/service/db.py", line 480, in dispatch
+    return g[exp_method_name](*params)
+  File "<decorator-gen-20>", line 2, in exp_create_database
+  File "/opt/odoo/odoo/service/db.py", line 43, in if_db_mgt_enabled
+    return method(self, *args, **kwargs)
+  File "/opt/odoo/odoo/service/db.py", line 140, in exp_create_database
+    _create_empty_database(db_name)
+  File "/opt/odoo/odoo/service/db.py", line 101, in _create_empty_database
+    with closing(db.cursor()) as cr:
+  File "/opt/odoo/odoo/sql_db.py", line 740, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+  File "/opt/odoo/odoo/sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+  File "<decorator-gen-2>", line 2, in borrow
+  File "/opt/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/opt/odoo/odoo/sql_db.py", line 668, in borrow
+    result = psycopg2.connect(
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  role "operador_odoo" does not exist
+
+2024-09-01 17:04:58,555 57162 INFO None odoo.sql_db: Connection to the database failed 
+2024-09-01 17:04:58,600 57162 INFO None werkzeug: 127.0.0.1 - - [01/Sep/2024 17:04:58] "POST /web/database/create HTTP/1.1" 200 - 0 0.000 1.782
+^C2024-09-01 17:11:04,631 57162 INFO ? odoo.service.server: Initiating shutdown 
+2024-09-01 17:11:04,631 57162 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2024-09-01 17:11:04,984 57162 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 0 connections  
+operador_odoo@darly-virtualbox:~$ sudo -u postgres psql
+[sudo] password for operador_odoo: 
+operador_odoo is not in the sudoers file.  This incident will be reported.
+operador_odoo@darly-virtualbox:~$ sudo -u postgres psql
+[sudo] password for operador_odoo: 
+Sorry, try again.
+[sudo] password for operador_odoo: 
+operador_odoo is not in the sudoers file.  This incident will be reported.
+operador_odoo@darly-virtualbox:~$ sudo nano /etc/odoo/odoo.conf
+[sudo] password for operador_odoo: 
+operador_odoo is not in the sudoers file.  This incident will be reported.
+operador_odoo@darly-virtualbox:~$ cd ..
+operador_odoo@darly-virtualbox:/opt$ cd..
+cd..: command not found
+operador_odoo@darly-virtualbox:/opt$ cd ..
+operador_odoo@darly-virtualbox:/$ cd ..
+operador_odoo@darly-virtualbox:/$ cd ..
+operador_odoo@darly-virtualbox:/$ sudo nano /etc/odoo/odoo.conf
+[sudo] password for operador_odoo: 
+operador_odoo is not in the sudoers file.  This incident will be reported.
+operador_odoo@darly-virtualbox:/$ su darly
+Password: 
+darly@darly-virtualbox:/$ sudo nano /etc/odoo/odoo.conf
+[sudo] password for darly: 
+darly@darly-virtualbox:/$ su - root
+Password: 
+su: Authentication failure
+darly@darly-virtualbox:/$ sudo passwd root
+New password: 
+Retype new password: 
+passwd: password updated successfully
+darly@darly-virtualbox:/$ su - root
+Password: 
+root@darly-virtualbox:~# sudo nano /etc/odoo/odoo.conf
+root@darly-virtualbox:~# cd /opt/odoo
+root@darly-virtualbox:/opt/odoo# ls
+addons           COPYRIGHT  doc      MANIFEST.in  odoo-bin   requirements.txt  setup      setup.py
+CONTRIBUTING.md  debian     LICENSE  odoo         README.md  SECURITY.md       setup.cfg
+root@darly-virtualbox:/opt/odoo# ./setup
+-bash: ./setup: Is a directory
+root@darly-virtualbox:/opt/odoo# nano /opt/odoo/setup
+root@darly-virtualbox:/opt/odoo# nano /opt/odoo/setup.cfg
+root@darly-virtualbox:/opt/odoo# sudo nano /etc/odoo/odoo.conf
+root@darly-virtualbox:/opt/odoo# cd /opt/odoo
+root@darly-virtualbox:/opt/odoo# ls
+addons           COPYRIGHT  doc      MANIFEST.in  odoo-bin   requirements.txt  setup      setup.py
+CONTRIBUTING.md  debian     LICENSE  odoo         README.md  SECURITY.md       setup.cfg
+root@darly-virtualbox:/opt/odoo# ls -la
+total 152
+drwxr-x---  11 operador_odoo operador_odoo  4096 sep  1 12:22 .
+drwxr-xr-x   3 root          root           4096 sep  1 11:45 ..
+drwxr-xr-x 479 operador_odoo operador_odoo 20480 sep  1 11:45 addons
+-rw-r--r--   1 operador_odoo operador_odoo   803 sep  1 11:45 CONTRIBUTING.md
+-rw-r--r--   1 operador_odoo operador_odoo   433 sep  1 11:45 COPYRIGHT
+drwxr-xr-x   3 operador_odoo operador_odoo  4096 sep  1 11:45 debian
+drwxr-xr-x   3 operador_odoo operador_odoo  4096 sep  1 11:45 doc
+drwxr-xr-x   8 operador_odoo operador_odoo  4096 sep  1 11:45 .git
+drwxr-xr-x   2 operador_odoo operador_odoo  4096 sep  1 11:45 .github
+-rw-r--r--   1 operador_odoo operador_odoo   726 sep  1 11:45 .gitignore
+-rw-r--r--   1 operador_odoo operador_odoo 43529 sep  1 11:45 LICENSE
+drwxrwxr-x   3 operador_odoo operador_odoo  4096 sep  1 11:49 .local
+-rw-r--r--   1 operador_odoo operador_odoo   124 sep  1 11:45 MANIFEST.in
+drwxr-xr-x  12 operador_odoo operador_odoo  4096 sep  1 11:49 odoo
+-rwxr-xr-x   1 operador_odoo operador_odoo   180 sep  1 11:45 odoo-bin
+-rw-------   1 operador_odoo operador_odoo   158 sep  1 12:00 .odoorc
+-rw-r--r--   1 operador_odoo operador_odoo  2114 sep  1 11:45 README.md
+-rw-r--r--   1 operador_odoo operador_odoo  5275 sep  1 11:45 requirements.txt
+-rw-r--r--   1 operador_odoo operador_odoo  1734 sep  1 11:45 SECURITY.md
+drwxr-xr-x   4 operador_odoo operador_odoo  4096 sep  1 11:45 setup
+-rw-r--r--   1 operador_odoo operador_odoo   339 sep  1 11:45 setup.cfg
+-rw-r--r--   1 operador_odoo operador_odoo  1759 sep  1 11:45 setup.py
+drwxr-xr-x   2 operador_odoo operador_odoo  4096 sep  1 11:45 .tx
+root@darly-virtualbox:/opt/odoo# su operador_odoo
+operador_odoo@darly-virtualbox:~$ ./odoo
+bash: ./odoo: Is a directory
+operador_odoo@darly-virtualbox:~$ cd /odoo
+bash: cd: /odoo: No such file or directory
+operador_odoo@darly-virtualbox:~$ ls
+addons           COPYRIGHT  doc      MANIFEST.in  odoo-bin   requirements.txt  setup      setup.py
+CONTRIBUTING.md  debian     LICENSE  odoo         README.md  SECURITY.md       setup.cfg
+operador_odoo@darly-virtualbox:~$ su ls
+su: user ls does not exist or the user entry does not contain all the required fields
+operador_odoo@darly-virtualbox:~$ sudo ls
+[sudo] password for operador_odoo: 
+operador_odoo is not in the sudoers file.  This incident will be reported.
+operador_odoo@darly-virtualbox:~$ root
+Command 'root' not found, but can be installed with:
+snap install root-framework
+Please ask your administrator.
+operador_odoo@darly-virtualbox:~$ cd /opt/odoo
+operador_odoo@darly-virtualbox:~$ ./odoo-bin
+2024-09-01 17:34:41,410 57578 INFO ? odoo: Odoo version 16.0 
+2024-09-01 17:34:41,410 57578 INFO ? odoo: Using configuration file at /opt/odoo/.odoorc 
+2024-09-01 17:34:41,410 57578 INFO ? odoo: addons paths: ['/opt/odoo/odoo/addons', '/opt/odoo/.local/share/Odoo/addons/16.0', '/opt/odoo/addons'] 
+2024-09-01 17:34:41,410 57578 INFO ? odoo: database: default@default:default 
+2024-09-01 17:34:41,468 57578 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2024-09-01 17:34:41,568 57578 INFO ? odoo.service.server: HTTP service (werkzeug) running on darly-virtualbox:8069 
+2024-09-01 17:34:41,570 57578 INFO ? odoo.sql_db: Connection to the database failed 
+Exception in thread odoo.service.cron.cron0:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/odoo/odoo/service/server.py", line 508, in target
+    self.cron_thread(i)
+  File "/opt/odoo/odoo/service/server.py", line 466, in cron_thread
+    with conn.cursor() as cr:
+  File "/opt/odoo/odoo/sql_db.py", line 740, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+  File "/opt/odoo/odoo/sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+  File "<decorator-gen-2>", line 2, in borrow
+  File "/opt/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/opt/odoo/odoo/sql_db.py", line 668, in borrow
+    result = psycopg2.connect(
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  role "operador_odoo" does not exist
+
+2024-09-01 17:34:41,573 57578 INFO ? odoo.sql_db: Connection to the database failed 
+Exception in thread odoo.service.cron.cron1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/odoo/odoo/service/server.py", line 508, in target
+    self.cron_thread(i)
+  File "/opt/odoo/odoo/service/server.py", line 466, in cron_thread
+    with conn.cursor() as cr:
+  File "/opt/odoo/odoo/sql_db.py", line 740, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+  File "/opt/odoo/odoo/sql_db.py", line 267, in __init__
+    self._cnx = pool.borrow(dsn)
+  File "<decorator-gen-2>", line 2, in borrow
+  File "/opt/odoo/odoo/tools/func.py", line 87, in locked
+    return func(inst, *args, **kwargs)
+  File "/opt/odoo/odoo/sql_db.py", line 668, in borrow
+    result = psycopg2.connect(
+  File "/usr/local/lib/python3.10/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  role "operador_odoo" does not exist
