@@ -1,89 +1,93 @@
-#!/bin/bash
-
-# Ruta donde se instalará Odoo
-ruta_odoo='/opt/odoo'
-
-# Ruta donde se almacenarán los logs
-ruta_logs='/var/log/odoo/'
-
-# Usuario del sistema operativo con permisos para gestionar Odoo
-usuario_1='operador_odoo'
-
-# Contraseña para el usuario postgres del SGBD POSTGRES
-pass_postgres='pass_postgres_bd'
-
-# Usuario de la base de datos que configuraremos en Odoo
-usuario_2='admin_bd_empresa1'
-
-# Contraseña para el usuario_2
-pass_usuario_2='abc123..'
-
-# Nombre de la base de datos que configuraremos en Odoo
-nombre_bd='bd_empresa1'
-
-# Actualizar el sistema
-sudo apt update
-sudo apt -y upgrade
-
-# Instalar dependencias
-sudo apt install curl fontconfig xfonts-base xfonts-75dpi postgresql postgresql-server-dev-14 git python3 python3-pip build-essential python3-dev libldap2-dev libsasl2-dev python3-setuptools libjpeg-dev nodejs npm postgresql-client -y
-clear
-
-# Crear el usuario del sistema para Odoo
-sudo adduser --system --quiet --shell /bin/bash --home ${ruta_odoo} --gecos "${usuario_1}" --group ${usuario_1}
-sudo passwd ${usuario_1}
-
-# Clonar el repositorio de Odoo
-sudo git clone --depth 1 --branch 16.0 https://github.com/odoo/odoo ${ruta_odoo}
-
-# Establecer permisos adecuados
-sudo chown -R ${usuario_1}:${usuario_1} ${ruta_odoo}
-sudo mkdir -p ${ruta_logs}
-sudo chown -R ${usuario_1}:${usuario_1} ${ruta_logs}
-clear
-
-# Instalar cffi y otras dependencias
-sudo rm /usr/lib/python3/dist-packages/_cffi_backend.cpython-310-x86_64-linux-gnu.so
-sudo pip3 install cffi
-sudo pip3 install -r ${ruta_odoo}/requirements.txt
-clear
-
-# Instalar wkhtmltopdf
-cd /tmp
-wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
-sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb
-sudo ln -s /usr/local/bin/wkhtmltopdf /usr/bin/
-sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin/
-clear
-
-# Instalar pgAdmin 4
-curl -fsSL https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/pgadmin.gpg
-sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/jammy pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
-sudo apt update
-sudo apt install pgadmin4-desktop -y
-clear
-
-# Configurar PostgreSQL
-sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '${pass_postgres}';"
-sudo -u postgres psql -c "CREATE USER ${usuario_2} WITH PASSWORD '${pass_usuario_2}';"
-sudo -u postgres psql -c "CREATE DATABASE ${nombre_bd};"
-sudo -u postgres psql -c "GRANT ALL ON DATABASE ${nombre_bd} TO ${usuario_2};"
-sudo -u postgres psql -c "ALTER DATABASE ${nombre_bd} OWNER TO ${usuario_2};"
-
-# Iniciar Odoo por primera vez
-sudo -u ${usuario_1} ${ruta_odoo}/odoo-bin -r ${usuario_2} -w ${pass_usuario_2} --db_host=localhost -d ${nombre_bd} -i base --addons-path=${ruta_odoo}/addons --without-demo=all --stop-after-init
-clear
-
-# Cambiar la contraseña del usuario postgres del sistema operativo
-echo "Introduzca contraseña para el usuario postgres del sistema operativo"
-sudo passwd postgres
-clear
-
-# Mensajes finales
-echo "Usuario de sistema ${usuario_1}... CREADO"
-echo "Odoo descargado en ${ruta_odoo}"
-echo "La carpeta de logs está en ${ruta_logs}"
-echo "Instalado cffi, wkhtmltopdf y pgAdmin4"
-echo "Contraseña del usuario postgres de la BD cambiada a: ${pass_postgres}"
-echo "En el SGBD Postgres se ha creado el usuario: ${usuario_2} con contraseña: ${pass_usuario_2}"
-echo "En el SGBD Postgres se ha creado la bd: ${nombre_bd} y se han asignado permisos y propiedad"
+select am.name as Factura,
+rp.name as Cliente,
+am.invoice_date as "Fecha de factura",
+pp.default_code as Producto,
+aml.quantity as cantidad,
+aml.name as Descripcion,
+aa.code as Cuenta,
+aa.name as cuenta,
+aml.price_unit as "Precio unitario",
+aml.price_subtotal as subtotal,
+am.amount_untaxed as Importe,
+am.amount_tax as "Iva 12%",
+am.amount_total as total,
+am.amount_residual as "importe adeudado",
+aml2.name as Impuesto
+from account_move am
+inner join account_move_line aml on aml.move_id = am.id
+inner join res_partner rp on am.partner_id = rp.id
+inner join product_product pp on pp.id = aml.product_id
+inner join account_account aa on aml.account_id = aa.id
+inner join account_move_line aml2 on aml2.move_id = am.id
+where am.name = 'Fact 001-001-000000002'
+and aml2.name = 'IVA 12% (411, Bienes)' ;
+-===============================================================
+select am.name as Factura,
+rp.name as Cliente,
+am.invoice_date as "Fecha de factura",
+pp.default_code as Producto,
+aml.quantity as cantidad,
+aml.name as Descripcion,
+aa.code as Cuenta,
+aa.name as cuenta,
+aml.price_unit as "Precio unitario",
+aml.price_subtotal as subtotal,
+am.amount_untaxed as Importe,
+am.amount_tax as "Iva 12%",
+am.amount_total as total,
+am.amount_residual as "importe adeudado"
+from account_move am
+inner join account_move_line aml on aml.move_id = am.id
+inner join res_partner rp on am.partner_id = rp.id
+inner join product_product pp on pp.id = aml.product_id
+inner join account_account aa on aml.account_id = aa.id
+where am.name = 'Fact 001-001-000000001';
+====================================================================
+select am.name as Factura,
+rp.name as Cliente,
+am.invoice_date as "Fecha de factura",
+pp.default_code as Producto,
+aml.quantity as cantidad,
+aml.name as Descripcion,
+aa.code as Cuenta,
+aa.name as cuenta,
+aml.price_subtotal as subtotal,
+sum(aml.price_subtotal) as base 
+from account_move am
+inner join account_move_line aml on aml.move_id = am.id
+inner join res_partner rp on am.partner_id = rp.id
+inner join product_product pp on pp.id = aml.product_id
+inner join account_account aa on aml.account_id = aa.id
+where am.name = 'Fact 001-001-000000001'
+group by am.name,
+rp.name,
+am.invoice_date ,
+pp.default_code,
+aml.quantity,
+aml.name,
+aa.code,
+aa.name ,
+aml.price_subtotal;
+==================================================================================
+SELECT 
+    rp.name AS nombre_cliente,
+    rp.email AS email_cliente,
+    rp.phone AS telefono_cliente,
+    pt.name ->> 'en_US' AS nombre_producto,
+    SUM(sol.product_uom_qty) AS cantidad_comprada
+FROM 
+    sale_order so
+JOIN 
+    res_partner rp ON so.partner_id = rp.id
+JOIN 
+    sale_order_line sol ON sol.order_id = so.id
+JOIN 
+    product_product pp ON sol.product_id = pp.id
+JOIN 
+    product_template pt ON pp.product_tmpl_id = pt.id
+WHERE 
+    so.state IN ('sale', 'done')  -- Filtrar solo órdenes confirmadas o completadas
+GROUP BY 
+    rp.name, rp.email, rp.phone, pt.name
+ORDER BY 
+    rp.name;
